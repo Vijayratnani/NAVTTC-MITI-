@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script lang="javascript">
+        let m = 0;
+        let operator = "";
+
+        function fb1() { 
+            document.getElementById("t1").value += 1;
+        }
+        function fb2() { 
+            document.getElementById("t1").value += 2;
+        }
+        function fb3() { 
+            document.getElementById("t1").value += 3;
+        }
+        function fb4() { 
+            document.getElementById("t1").value += 4;
+        }
+        function fb5() { 
+            document.getElementById("t1").value += 5;
+        }
+        function fb6() { 
+            document.getElementById("t1").value += 6;
+        }
+        function fb7() { 
+            document.getElementById("t1").value += 7;
+        }
+        function fb8() { 
+            document.getElementById("t1").value += 8;
+        }
+        function fb9() { 
+            document.getElementById("t1").value += 9;
+        }
+        function fb0() { 
+            document.getElementById("t1").value += 0;
+        }
+        function fbdot() { 
+            document.getElementById("t1").value += '.';
+        }
+
+        function fadd() { 
+            m = Number(document.getElementById("t1").value);
+            document.getElementById("t1").value = "";
+            operator = "+";   
+        }
+
+        function fsub() { 
+            m = Number(document.getElementById("t1").value);
+            document.getElementById("t1").value = "";
+            operator = "-";   
+        }
+
+        function fmul() { 
+            m = Number(document.getElementById("t1").value);
+            document.getElementById("t1").value = "";
+            operator = "*";   
+        }
+
+        function fdivi() { 
+            m = Number(document.getElementById("t1").value);
+            document.getElementById("t1").value = "";
+            operator = "/";   
+        }
+
+        function fequal() {
+            let a = Number(document.getElementById("t1").value);
+            let b = 0;
+
+            if (operator === "+") {
+                b = m + a;
+            } else if (operator === "-") {
+                b = m - a;
+            } else if (operator === "*") {
+                b = m * a;
+            } else if (operator === "/") {
+                b = m / a;
+            }
+            
+            document.getElementById("t1").value = b;
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .calculator h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calculator input[type="text"] {
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .calculator table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calculator td {
+            padding: 10px;
+        }
+
+        .calculator button {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator button:active {
+            background-color: #0056b3;
+        }
+
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        .calculator button.operator {
+            background-color: #28a745;
+        }
+
+        .calculator button.operator:active {
+            background-color: #218838;
+        }
+
+        @media (max-width: 400px) {
+            .calculator button {
+                font-size: 16px;
+                height: 45px;
+            }
+
+            .calculator input[type="text"] {
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <input type="text" id="t1" readonly>
+        <table>
+            <tr>
+                <td><button onclick="fb1()">1</button></td>
+                <td><button onclick="fb2()">2</button></td>
+                <td><button onclick="fb3()">3</button></td>
+                <td><button class="operator" onclick="fadd()">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="fb4()">4</button></td>
+                <td><button onclick="fb5()">5</button></td>
+                <td><button onclick="fb6()">6</button></td>
+                <td><button class="operator" onclick="fsub()">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="fb7()">7</button></td>
+                <td><button onclick="fb8()">8</button></td>
+                <td><button onclick="fb9()">9</button></td>
+                <td><button class="operator" onclick="fmul()">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="fb0()">0</button></td>
+                <td><button onclick="fbdot()">.</button></td>
+                <td><button class="operator" onclick="fequal()">=</button></td>
+                <td><button class="operator" onclick="fdivi()">/</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

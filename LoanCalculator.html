@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <script>
+        function calculateLoan() {
+            var amount = Number(document.getElementById("loanAmount").value);
+            var period = Number(document.getElementById("period").value);
+            var rate = Number(document.getElementById("interestRate").value);
+            
+            if(period > 0 && period <= 12){
+                rate = 5;
+                document.getElementById("interestRate").innerHTML = "Interest Rate:"+ 5 +"%";
+            } else if(period > 12 && period <= 24){
+                rate = 10;
+                document.getElementById("interestRate").innerHTML = "Interest Rate:"+ 10 +"%";
+            } else if(period > 24 && period <= 36){
+                rate = 20;
+                document.getElementById("interestRate").innerHTML = "Interest Rate:"+ 20 +"%";
+            }
+
+            var totalInterest = (amount * rate * period) / 100;
+            var totalAmount = amount + totalInterest;
+            var monthlyInstallment = totalAmount / period;
+
+            document.getElementById("totalAmount").innerHTML = "Loan Amount + Interest:"+ totalAmount.toFixed(2); 
+            document.getElementById("monthlyInstallment").innerHTML ="Monthly Installment:"+ monthlyInstallment.toFixed(2);
+        }
+
+        function refreshForm() {
+            document.getElementById("loanForm").reset();
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .calculator-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .calculator-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calculator-container label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .calculator-container input[type="number"],
+        .calculator-container input[type="text"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .calculator-container input[readonly] {
+            background-color: #f9f9f9;
+        }
+
+        .calculator-container button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator-container button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 400px) {
+            .calculator-container {
+                padding: 15px;
+            }
+
+            .calculator-container h2 {
+                font-size: 18px;
+            }
+
+            .calculator-container label {
+                font-size: 14px;
+            }
+
+            .calculator-container button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Loan Calculator</h2>
+        <form id="loanForm">
+            <label>Loan Amount:</label>
+            <input type="number" id="loanAmount" required placeholder="Enter loan amount"> Rs <br>
+            
+            <label>Period:</label>
+            <input type="number" id="period" required placeholder="Enter period in months"> Months <br>
+            
+
+
+            <div id="interestRate"></div>            
+            <div id="totalAmount"></div>
+            <div id="monthlyInstallment"></div>
+            <!-- <input type="text" id="monthlyInstallment" readonly placeholder="Calculated installment"> Rs <br> -->
+            
+            <button type="button" onclick="calculateLoan()">Calculate</button>
+            <button type="button" onclick="refreshForm()">Refresh</button>
+        </form>
+    </div>
+</body>
+</html>

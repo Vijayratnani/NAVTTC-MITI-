@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body{
+            background-color: azure;
+        }
+        span{
+            background-color: green;
+            color: white;
+        }
+        p{
+            background-color: white;
+            color: green;
+        }
+    </style>
+    <script>
+        var bol=1
+        function timer(){
+            if(bol==1){
+                document.getElementById('timer').innerHTML= '<span>PAKISTAN</span>';
+                bol=0;
+            }
+            
+            else{
+                document.getElementById('timer').innerHTML= '<p>ZINDABAD</p>';                            
+                bol=1;
+            }
+            setTimeout('timer()',1000);
+        }
+    </script>
+</head>
+<body onload="timer()">
+    <h1 id="timer">Pakistan</h1>
+    
+</body>
+</html>
